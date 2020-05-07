@@ -17,7 +17,7 @@ pipeline {
          }
          stage('Upload to AWS') {
               steps {
-                  withAWS(region:'us-east-2',credentials:'aws-user-waqas-secret-key') {
+                  withAWS(region:'us-west-2',credentials:'aws-user-waqas-secret-key') {
                   sh 'echo "Uploading content with AWS creds attempt 4"'
                       s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'my-aws-bucket-120')
                   }
