@@ -20,11 +20,11 @@ pipeline {
                  aquaMicroscanner imageName: 'alpine:latest', notCompleted: 'exit 1', onDisallowed: 'fail'
               }
          }         
-         stage('Upload to AWS') {
+        stage('Upload to AWS') {
               steps {
-                  withAWS(region:'us-east-2',credentials:'aws-static') {
-                  sh 'echo "Uploading content with AWS creds attempt 4"'
-                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'static-jenkins-pipeline')
+                  withAWS(region:'us-west-2',credentials:'aws-user-waqas-secret-key') {
+                  sh 'echo "Uploading content with AWS creds"'
+                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'my-aws-bucket-120')
                   }
               }
          }
